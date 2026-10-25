@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
+      - name: Randomise lesson count
+        id: random
+        run: echo "lessons=$(shuf -i 100-500 -n 1)" >> "$GITHUB_OUTPUT"
       - run: bun index.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
