@@ -2,7 +2,7 @@ name: Get to the top of League
 
 on:
   schedule:
-    - cron: '0 9 * * 0'
+    - cron: '0 9 * * *'
 
 jobs:
   study:
@@ -13,4 +13,4 @@ jobs:
       - run: bun index.js
         env:
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
-          LESSONS: 500
+          LESSONS: ${{ steps.random.outputs.lessons }}
